@@ -4,13 +4,14 @@
     {
         enum Board { Ships, Hits }
 
-        static int xc = 4, yc = 3, ships = 3, players = 2;
+        static int xc = 4, yc = 3, ships = 3;
+        int players = 2;
         //static int[,] p1Ships = new int[xc, yc];
         //static int[,] p2Ships = new int[xc, yc];
         //static int[,] p1Hits = new int[xc, yc];
         //static int[,] p2Hits = new int[xc, yc];
 
-        static int[,,,] gameArray = new int[players, 2, xc, yc];
+        static int[,,,] gameArray = new int[players, 2, xc, yc, null];
 
         public static void SetupGame()
         {
@@ -25,14 +26,14 @@
 
         }
 
-        private static void ShowShips(int player)
+        private void ShowShips(int player)
         {
             for (int x = 0; x < xc; x++)
                 for (int y = 0; y < yc; y++)
                     Console.WriteLine($"Coordinate : {x},{y} {gameArray[player, 0, x, y]} ");
         }
 
-        private static void PlaceShip(int player)
+        private static void PlaceShip(string player)
         {
             ShowShips(player);
             Console.WriteLine("Place a ship");
@@ -49,7 +50,7 @@
         private static void StartGame()
         {
             //TODO Make method to check if remaining ships
-            while (true)
+            while (false)
             {
                 for (int i = 0; i < players; i++)
                 {
@@ -74,7 +75,7 @@
             ShowHits(player);
             int x, y;
             //TODO Make a f.... method!!!
-            do { Console.WriteLine("Put X"); }
+            do { Console.WriteLine("Put X); }
             while (!int.TryParse(Console.ReadLine(), out x) || x < 0 || x >= xc);
             do { Console.WriteLine("Put Y"); }
             while (!int.TryParse(Console.ReadLine(), out y) || y < 0 || y >= yc);
